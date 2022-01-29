@@ -1,0 +1,31 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-crear-producto',
+  templateUrl: './crear-producto.component.html',
+  styleUrls: ['./crear-producto.component.css']
+})
+export class CrearProductoComponent implements OnInit {
+ productoForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.productoForm = this.fb.group({
+      producto: ['', Validators.required],
+      categoria: ['', Validators.required],
+      ubicacion: ['', Validators.required],
+      precio: ['', Validators.required],
+    })
+
+   }
+
+  ngOnInit() {
+  }
+
+  agregarProducto(){
+    console.log(this.productoForm)
+
+    console.log(this.productoForm.get('producto').value);
+  }
+
+}
